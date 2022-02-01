@@ -94,3 +94,50 @@ while True:
     ball.setx(ball.xcor() + ball.x)
     ball.sety(ball.ycor() + ball.y)
     
+    # Boarder checking ycor = up and down 
+    if ball.ycor() > 340:
+        ball.sety(340)
+        ball.y *= -1  # it reverses the direction of the ball e.g if ball.y = 2, 2 - -1 = -2
+        os.system('afplay Sound.wav&')
+    # uses the measurement of the height to reverse to control the movement of the ball
+    elif ball.ycor() < -340:
+        ball.sety(-340)
+        ball.y *= -1
+        os.system('afplay Sound.wav&')
+        
+    # Boader checking xcor = right and left 
+    # uses the width to control the direction of the ball
+    if ball.xcor() > 480:
+        ball.goto(0, 0)  # reverse direction
+        ball.x *= -1
+        score_a += 1
+        pen.clear()
+        pen.write('Player A Miss: {}  Player B Miss: {}'.format(score_b, score_a), align='center', font=('courier', 34, 'italic'))
+        os.system('afplay Sound.wav&')
+        
+    elif ball.xcor() < -480:
+        ball.goto(0, 0)
+        ball.x *= -1
+        score_b += 1
+        pen.clear()
+        pen.write('Player A Miss: {}  Player B Miss: {}'.format(score_b, score_a), align='center', font=('courier', 34, 'italic'))
+        os.system('afplay Sound.wav&')
+        
+    # brick and ball collusion
+
+    if ball.xcor() < -420 and ball.ycor() < brick_a.ycor() + 50 and ball.ycor() > brick_a.ycor() - 50:
+        ball.x *= -1
+        point_b += 1
+        pen.clear()
+        pen.write('Player A: {} Player B: {}'.format(point_b, point_a), align='center', font=('courier', 30, 'italic'))
+        os.system('afplay Ball.wav&')
+        
+    if ball.xcor() > 420 and ball.ycor() < brick_b.ycor() + 50 and ball.ycor() > brick_b.ycor() - 50:
+        ball.x *= -1
+        point_a += 1
+        pen.clear()
+        pen.write('Player A: {} Player B: {}'.format(point_b, point_a), align='center', font=('courier', 30, 'italic'))
+        os.system('afplay Ball.wav&')
+        
+
+
