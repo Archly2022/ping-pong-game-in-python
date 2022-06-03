@@ -33,7 +33,7 @@ brick_b.goto(450, 0)
 
 # ball
 ball = turtle.Turtle()
-ball.speed(0)
+ball.speed(0.5)
 ball.shape('circle')
 ball.shapesize(2, 2, 2)
 ball.color('orange')
@@ -122,7 +122,7 @@ while True:
         pen.clear()
         pen.write('Player A Miss: {}  Player B Miss: {}'.format(score_b, score_a), align='center', font=('courier', 34, 'italic'))
         os.system('afplay Sound.wav&')
-        
+              
     # brick and ball collusion
 
     if ball.xcor() < -420 and ball.ycor() < brick_a.ycor() + 50 and ball.ycor() > brick_a.ycor() - 50:
@@ -140,4 +140,14 @@ while True:
         os.system('afplay Ball.wav&')
         
 
-
+ #  Game over statement
+    if score_a == 2:
+        pen.clear()
+        pen.write('Game Over!. Player B wins.', align='center', font=('courier', 34, 'italic'))
+        os.system('afplay Sound.wav&')
+        pen.reset()
+    if  score_b == 2:
+        pen.clear()
+        pen.write('Game Over!. Player A wins.', align='center', font=('courier', 34, 'italic'))
+        os.system('afplay Sound.wav&')
+        pen.reset()
