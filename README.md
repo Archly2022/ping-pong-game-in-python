@@ -1,5 +1,5 @@
 # ping-pong-game-in-python
-My version of the old popular game written in python as a beginner..
+My version of the old popular game written in python.
 
 import turtle
 import os
